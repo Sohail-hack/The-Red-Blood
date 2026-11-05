@@ -9,5 +9,6 @@ Thumbs.db
 scratch/
 .system_generated/
 Red-Blood-main/
-The Red Blood/
 *.orig.png
+package.json.txt
+server/
