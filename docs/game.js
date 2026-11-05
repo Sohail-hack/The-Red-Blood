@@ -133,7 +133,12 @@ const platformImg = new Image();
 platformImg.src = "assets/images/platform.png";
 
 const medkitImg = new Image();
-medkitImg.src = "assets/images/medkit.png";
+medkitImg.src = "assets/images/Medkit.png";
+medkitImg.onerror = () => {
+  if (!medkitImg.src.endsWith("medkit_clean.png")) {
+    medkitImg.src = "assets/images/medkit_clean.png";
+  }
+};
 
 // --- UI Elements ---
 const canvas = document.getElementById("gameCanvas");
@@ -841,8 +846,17 @@ function drawArena() {
     if (medkitImg.complete && medkitImg.naturalWidth > 0) {
       ctx.drawImage(medkitImg, activeMedkit.x, bobY, activeMedkit.w, activeMedkit.h);
     } else {
-      ctx.fillStyle = "#256b49";
-      ctx.fillRect(activeMedkit.x, bobY, activeMedkit.w, activeMedkit.h);
+      // Pixel medical kit fallback
+      ctx.fillStyle = "#ffffff";
+      ctx.fillRect(activeMedkit.x + 2, bobY + 2, activeMedkit.w - 4, activeMedkit.h - 4);
+      ctx.strokeStyle = "#2b3542";
+      ctx.lineWidth = 2;
+      ctx.strokeRect(activeMedkit.x + 2, bobY + 2, activeMedkit.w - 4, activeMedkit.h - 4);
+      ctx.fillStyle = "#dc2626";
+      const mcx = activeMedkit.x + activeMedkit.w / 2;
+      const mcy = bobY + activeMedkit.h / 2;
+      ctx.fillRect(mcx - 3, mcy - 8, 6, 16);
+      ctx.fillRect(mcx - 8, mcy - 3, 16, 6);
     }
     ctx.restore();
   }
