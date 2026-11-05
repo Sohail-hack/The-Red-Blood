@@ -2,7 +2,7 @@
 
 A retro 16-bit arcade fighting arena game built with HTML5 Canvas, Vanilla JavaScript, and the Web Audio API.
 
-🎮 **Live Demo:** [https://sohail-hack.github.io/Red-Blood/](https://sohail-hack.github.io/Red-Blood/)
+🎮 **Live Demo:** [https://sohail-hack.github.io/The-Red-Blood/](https://sohail-hack.github.io/The-Red-Blood/)
 
 ---
 
@@ -52,7 +52,7 @@ A retro 16-bit arcade fighting arena game built with HTML5 Canvas, Vanilla JavaS
 
 ## 🌐 How to Enable GitHub Pages (Live Website)
 
-1. Push this repository to `https://github.com/Sohail-hack/Red-Blood`.
+1. Push this repository to `https://github.com/Sohail-hack/The-Red-Blood`.
 2. Go to your repository on GitHub: **Settings** > **Pages** (under Code and automation in the left sidebar).
 3. Under **Build and deployment**:
    - **Source:** Deploy from a branch
@@ -60,7 +60,7 @@ A retro 16-bit arcade fighting arena game built with HTML5 Canvas, Vanilla JavaS
    - **Folder:** `/docs`
 4. Click **Save**.
 5. Within 1-2 minutes, your game will be live at:
-   **`https://sohail-hack.github.io/Red-Blood/`**
+   **`https://sohail-hack.github.io/The-Red-Blood/`**
 
 ---
 
