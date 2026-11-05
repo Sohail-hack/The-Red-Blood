@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RED BLOOD - Tactical 2D Fighter Arena</title>
+  
+  <!-- Pixelated Fonts from Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@500;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="menu-view">
+
+  <!-- App Main Wrapper -->
+  <div id="appWrapper">
+
+    <!-- Top Status Bar (Only visible in Main Menu) -->
+    <header id="topBar">
+      <div class="brand-badge">
+        <span class="brand-dot"></span>
+        <span>RED BLOOD ARENA</span>
+      </div>
+      <button id="quickMusicBtn" class="quick-sound-btn" title="Toggle Music">
+        <span id="quickMusicIcon">🎵</span>
+        <span id="quickMusicText">MUSIC: ON</span>
+      </button>
+    </header>
+
+    <!-- =========================================================
+         MAIN MENU (Pixelated Fonts & Beautiful Classic Colors)
+         ========================================================= -->
+    <main id="menu">
+      <div class="hero-header">
+        <div class="title-pre">TACTICAL COMBAT ARENA</div>
+        <h1 class="game-title">RED BLOOD</h1>
+        <div class="title-sub">WIND BLADE SHOWDOWN</div>
+      </div>
+
+      <div class="menu-arena-layout">
+        <!-- Player 1 Showcase Card -->
+        <div class="fighter-card card-p1">
+          <div class="fighter-role">CRIMSON FIGHTER</div>
+          <div class="fighter-name">PLAYER 1</div>
+          <div class="fighter-avatar-wrapper">
+            <img src="assets/images/player1.png" alt="Player 1" id="p1PreviewImg">
+          </div>
+          <div class="fighter-weapon-badge">
+            <span>🌀</span>
+            <span>BLUE WIND</span>
+          </div>
+          <div class="fighter-keys-list">
+            <div class="key-row">
+              <span>MOVE:</span>
+              <span><span class="key-cap">A</span> <span class="key-cap">D</span></span>
+            </div>
+            <div class="key-row">
+              <span>JUMP:</span>
+              <span class="key-cap">W</span>
+            </div>
+            <div class="key-row">
+              <span>ATTACK:</span>
+              <span class="key-cap">E</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Center Action Menu -->
+        <div class="center-action-menu">
+          <button id="pvpBtn" class="pixel-btn btn-pvp">
+            <span>⚔️</span>
+            <span>PLAYER VS PLAYER</span>
+          </button>
+          
+          <button id="pvaBtn" class="pixel-btn btn-pva">
+            <span>🤖</span>
+            <span>PLAYER VS AI BOT</span>
+          </button>
+          
+          <button id="settingsBtn" class="pixel-btn btn-settings">
+            <span>⚙️</span>
+            <span>ARENA SETTINGS</span>
+          </button>
+
+          <button id="howToPlayBtn" class="pixel-btn btn-how-to-play">
+            <span>📖</span>
+            <span>HOW TO PLAY</span>
+          </button>
+
+          <button id="aboutBtn" class="pixel-btn btn-about">
+            <span>👤</span>
+            <span>ABOUT CREATOR</span>
+          </button>
+        </div>
+
+        <!-- Player 2 / AI Showcase Card -->
+        <div class="fighter-card card-p2">
+          <div class="fighter-role">AZURE PHANTOM</div>
+          <div class="fighter-name">PLAYER 2 / AI</div>
+          <div class="fighter-avatar-wrapper">
+            <img src="assets/images/player2.png" alt="Player 2" id="p2PreviewImg">
+          </div>
+          <div class="fighter-weapon-badge">
+            <span>🌪️</span>
+            <span>RED WIND</span>
+          </div>
+          <div class="fighter-keys-list">
+            <div class="key-row">
+              <span>MOVE:</span>
+              <span><span class="key-cap">←</span> <span class="key-cap">→</span></span>
+            </div>
+            <div class="key-row">
+              <span>JUMP:</span>
+              <span class="key-cap">↑</span>
+            </div>
+            <div class="key-row">
+              <span>ATTACK:</span>
+              <span class="key-cap">0</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Menu Footer Credit -->
+      <footer class="menu-footer">
+        <span>Created by <strong>Shaik Sohail</strong> •</span>
+        <a href="https://www.linkedin.com/in/shaik-sohail-a5482b328" target="_blank" rel="noopener noreferrer" class="footer-link">
+          🔗 LinkedIn Profile
+        </a>
+      </footer>
+    </main>
+
+    <!-- =========================================================
+         GAME CONTAINER & CANVAS (CLEAN - NO BUTTONS ABOVE)
+         ========================================================= -->
+    <div id="gameWrapper">
+      <div id="canvasContainer">
+        <canvas id="gameCanvas" width="800" height="400"></canvas>
+
+        <!-- Dynamically Positioned End of Match Screen -->
+        <div id="endScreen">
+          <h2 id="winnerBanner">PLAYER 1 WINS!</h2>
+          <div id="matchScoreSummary">FINAL SCORE: 2 - 1</div>
+          <div class="end-screen-buttons">
+            <button id="restartBtn" class="pixel-btn btn-pvp">🔁 REMATCH</button>
+            <button id="endSettingsBtn" class="pixel-btn btn-settings">⚙️ SETTINGS</button>
+            <button id="mainMenuBtn" class="pixel-btn btn-how-to-play">🏠 MAIN MENU</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div> <!-- End of appWrapper -->
+
+  <!-- =========================================================
+       ESC PAUSE MODAL
+       ========================================================= -->
+  <div id="pauseModal" class="modal-overlay">
+    <div class="pause-window">
+      <div class="pause-header">⚔️ PAUSED ⚔️</div>
+      <div class="pause-hint">PRESS [ESC] TO RESUME</div>
+      <div class="pause-buttons">
+        <button id="resumeBtn" class="pixel-btn btn-pvp">▶ RESUME MATCH</button>
+        <button id="pauseAudioBtn" class="pixel-btn btn-settings">🎵 MUSIC: ON</button>
+        <button id="pauseSettingsBtn" class="pixel-btn btn-settings">⚙️ SETTINGS</button>
+        <button id="pauseRestartBtn" class="pixel-btn btn-pva">🔁 RESTART MATCH</button>
+        <button id="pauseMainMenuBtn" class="pixel-btn btn-how-to-play">🏠 MAIN MENU</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       SETTINGS MODAL (z-index: 2000 - Shows in front of Pause)
+       ========================================================= -->
+  <div id="settingsModal" class="modal-overlay">
+    <div class="modal-window">
+      <div class="modal-header">
+        <div class="modal-title">
+          <span>⚙️</span>
+          <span>ARENA SETTINGS</span>
+        </div>
+        <button id="closeSettingsBtn" class="close-btn" title="Close Settings">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <!-- Audio Settings Section -->
+        <div class="setting-section">
+          <div class="section-label">
+            <span>🔊</span>
+            <span>AUDIO & SOUND ADJUSTER</span>
+          </div>
+
+          <!-- Music Toggle & Slider -->
+          <div class="setting-row">
+            <div class="setting-info">
+              <span class="setting-name">Background Music</span>
+              <span class="setting-desc">Theme and battle music</span>
+            </div>
+            <button id="musicToggleBtn" class="toggle-btn active">ON</button>
+          </div>
+          <div class="setting-row">
+            <div class="setting-info">
+              <span class="setting-name">Music Volume</span>
+            </div>
+            <div class="slider-group">
+              <input type="range" id="musicVolSlider" min="0" max="100" value="50">
+              <span id="musicVolVal" class="slider-val">50%</span>
+            </div>
+          </div>
+
+          <!-- Sound Effects Toggle & Slider -->
+          <div class="setting-row">
+            <div class="setting-info">
+              <span class="setting-name">Sound Effects (SFX)</span>
+              <span class="setting-desc">Wind blades, jumps, impacts</span>
+            </div>
+            <button id="sfxToggleBtn" class="toggle-btn active">ON</button>
+          </div>
+          <div class="setting-row">
+            <div class="setting-info">
+              <span class="setting-name">SFX Volume</span>
+            </div>
+            <div class="slider-group">
+              <input type="range" id="sfxVolSlider" min="0" max="100" value="70">
+              <span id="sfxVolVal" class="slider-val">70%</span>
+            </div>
+          </div>
+
+          <!-- Master Volume Slider -->
+          <div class="setting-row">
+            <div class="setting-info">
+              <span class="setting-name">Master Volume</span>
+              <span class="setting-desc">Overall game sound level</span>
+            </div>
+            <div class="slider-group">
+              <input type="range" id="masterVolSlider" min="0" max="100" value="80">
+              <span id="masterVolVal" class="slider-val">80%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gameplay Settings Section -->
+        <div class="setting-section">
+          <div class="section-label">
+            <span>⚔️</span>
+            <span>COMBAT RULES</span>
+          </div>
+
+          <!-- Fighter Health Option -->
+          <div class="setting-row">
+            <div class="setting-info">
+              <span class="setting-name">Fighter Health (HP)</span>
+              <span class="setting-desc">Max health points per round</span>
+            </div>
+            <div class="pill-group" id="healthSelector">
+              <button class="pill-option active" data-hp="10">10 HP</button>
+              <button class="pill-option" data-hp="15">15 HP</button>
+              <button class="pill-option" data-hp="20">20 HP</button>
+            </div>
+          </div>
+
+          <!-- Rounds to Win -->
+          <div class="setting-row">
+            <div class="setting-info">
+              <span class="setting-name">Match Format</span>
+              <span class="setting-desc">Rounds needed to win match</span>
+            </div>
+            <div class="pill-group" id="roundsSelector">
+              <button class="pill-option active" data-rounds="3">Best of 3</button>
+              <button class="pill-option" data-rounds="5">Best of 5</button>
+              <button class="pill-option" data-rounds="1">1 Round</button>
+            </div>
+          </div>
+
+          <!-- AI Difficulty -->
+          <div class="setting-row">
+            <div class="setting-info">
+              <span class="setting-name">AI Bot Intelligence</span>
+              <span class="setting-desc">Reaction speed & jump agility</span>
+            </div>
+            <div class="pill-group" id="difficultySelector">
+              <button class="pill-option" data-diff="easy">Easy</button>
+              <button class="pill-option active" data-diff="normal">Normal</button>
+              <button class="pill-option" data-diff="hard">Hard</button>
+            </div>
+          </div>
+
+          <!-- Medkit Spawns -->
+          <div class="setting-row">
+            <div class="setting-info">
+              <span class="setting-name">Medkit Healing Drops</span>
+              <span class="setting-desc">Spawn floating medkits on platforms (+3 HP)</span>
+            </div>
+            <button id="medkitToggleBtn" class="toggle-btn active">ON</button>
+          </div>
+
+          <!-- Screen Shake -->
+          <div class="setting-row">
+            <div class="setting-info">
+              <span class="setting-name">Screen Shake Feedback</span>
+              <span class="setting-desc">Impact camera shake on hit</span>
+            </div>
+            <button id="screenShakeToggleBtn" class="toggle-btn active">ON</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button id="resetSettingsBtn" class="pixel-btn btn-settings" style="padding: 8px 16px; font-size: 0.7rem;">DEFAULTS</button>
+        <button id="saveSettingsBtn" class="pixel-btn btn-pvp" style="padding: 8px 20px; font-size: 0.75rem;">SAVE & CLOSE</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       ABOUT CREATOR MODAL (Shaik Sohail LinkedIn)
+       ========================================================= -->
+  <div id="aboutModal" class="modal-overlay">
+    <div class="modal-window">
+      <div class="modal-header">
+        <div class="modal-title">
+          <span>👤</span>
+          <span>ABOUT THE CREATOR</span>
+        </div>
+        <button id="closeAboutBtn" class="close-btn" title="Close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="setting-section" style="text-align: center; align-items: center;">
+          <div style="font-size: 2.2rem; margin-bottom: 6px;">🥋</div>
+          <div style="font-family: var(--font-retro); font-size: 1.1rem; color: var(--gold-light); margin-bottom: 4px;">
+            SHAIK SOHAIL
+          </div>
+          <div style="font-size: 0.9rem; color: var(--crimson-light); font-weight: 700; margin-bottom: 12px;">
+            Game Developer & Creator of RED BLOOD Arena
+          </div>
+          <p style="color: var(--text-parchment-muted); line-height: 1.6; font-size: 0.95rem; text-align: left;">
+            Welcome to <strong>RED BLOOD</strong>! I developed this 2D tactical combat arena with fluid jump physics, elemental wind blade strikes, responsive AI bots, and classic 16-bit arcade aesthetics. Passionate about software engineering, creative coding, and interactive game design.
+          </p>
+        </div>
+
+        <div class="setting-section">
+          <div class="section-label">💼 CONNECT WITH ME</div>
+          <p style="color: var(--text-parchment-muted); font-size: 0.9rem; line-height: 1.5; margin-bottom: 8px;">
+            Explore my developer projects, connect professionally, or follow future game updates on LinkedIn:
+          </p>
+          <a href="https://www.linkedin.com/in/shaik-sohail-a5482b328" target="_blank" rel="noopener noreferrer" class="pixel-btn btn-linkedin">
+            <span>🔗</span>
+            <span>CONNECT ON LINKEDIN</span>
+          </a>
+          <div style="font-size: 0.75rem; color: var(--text-parchment-muted); text-align: center; margin-top: 4px;">
+            www.linkedin.com/in/shaik-sohail-a5482b328
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="closeAboutOkBtn" class="pixel-btn btn-pvp" style="padding: 8px 20px; font-size: 0.75rem;">CLOSE</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       HOW TO PLAY MODAL
+       ========================================================= -->
+  <div id="howToPlayModal" class="modal-overlay">
+    <div class="modal-window">
+      <div class="modal-header">
+        <div class="modal-title">
+          <span>📖</span>
+          <span>HOW TO PLAY</span>
+        </div>
+        <button id="closeHowToBtn" class="close-btn" title="Close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="setting-section">
+          <div class="section-label">🎯 OBJECTIVE</div>
+          <p style="color: var(--text-parchment-muted); line-height: 1.5; font-size: 0.95rem;">
+            Survive each round by striking your opponent with elemental wind blades to reduce their HP to 0. Win the required rounds to claim match victory!
+          </p>
+        </div>
+
+        <div class="setting-section">
+          <div class="section-label">🎮 CONTROLS</div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 4px;">
+            <div style="background: rgba(166, 36, 50, 0.15); border: 2px solid var(--crimson); border-radius: 4px; padding: 10px;">
+              <div style="color: var(--crimson-light); font-weight: 700; font-family: var(--font-retro); font-size: 0.7rem; margin-bottom: 6px;">PLAYER 1 (Crimson)</div>
+              <div style="font-size: 0.9rem; line-height: 1.8;">
+                • Move: <span class="key-cap">A</span> <span class="key-cap">D</span><br>
+                • Jump: <span class="key-cap">W</span><br>
+                • Blue Wind: <span class="key-cap">E</span>
+              </div>
+            </div>
+            <div style="background: rgba(41, 71, 111, 0.15); border: 2px solid var(--sapphire); border-radius: 4px; padding: 10px;">
+              <div style="color: #79a6db; font-weight: 700; font-family: var(--font-retro); font-size: 0.7rem; margin-bottom: 6px;">PLAYER 2 / AI (Azure)</div>
+              <div style="font-size: 0.9rem; line-height: 1.8;">
+                • Move: <span class="key-cap">←</span> <span class="key-cap">→</span><br>
+                • Jump: <span class="key-cap">↑</span><br>
+                • Red Wind: <span class="key-cap">0</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="setting-section">
+          <div class="section-label">⚡ ARENA TIPS</div>
+          <p style="color: var(--text-parchment-muted); line-height: 1.6; font-size: 0.9rem;">
+            • <strong>Pause Anytime:</strong> Press <span class="key-cap">ESC</span> during the fight to pause.<br>
+            • <strong>Controlled Attacks:</strong> Wind blades have a tactical delay cooldown—time your slashes carefully!<br>
+            • <strong>Platforms:</strong> Jump up through stone platforms from underneath.<br>
+            • <strong>Medkits:</strong> Periodically drop on platforms to heal <strong>+3 HP</strong>!
+          </p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="gotItBtn" class="pixel-btn btn-pvp" style="padding: 8px 20px; font-size: 0.75rem;">GOT IT!</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Game Engine Script -->
+  <script src="game.js"></script>
+</body>
+</html>

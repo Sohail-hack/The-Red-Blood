@@ -1,0 +1,50 @@
+🎮 RED BLOOD - HOW TO PLAY & CONTROLS
+
+============================================================
+🎮 CONTROLS:
+============================================================
+🔴 Player 1 (Crimson Fighter)
+  • Move Left / Right : A / D
+  • Jump              : W
+  • Attack (Blue Wind): E
+
+🔵 Player 2 (Azure Phantom)
+  • Move Left / Right : ← / → (Arrow Keys)
+  • Jump              : ↑ (Up Arrow)
+  • Attack (Red Wind) : 0 (Zero Key / Numpad 0)
+
+⏸️ Match Pause
+  • Press ESC at any time to open the Pause Menu!
+
+🤖 Player vs AI Bot
+  • Control Player 1 against the automated Azure Bot!
+  • Adjust AI Bot difficulty (Easy / Normal / Hard) in Arena Settings.
+
+============================================================
+🌪️ ELEMENTAL WIND BLADES:
+============================================================
+  • Player 1 hurls piercing BLUE WIND blades.
+  • Player 2 & AI Bot unleash flaming RED WIND blades.
+  • Each wind strike hit deducts 1 HP from your opponent and triggers hit sparks!
+
+============================================================
+🏥 ARENA FEATURES & MEDKITS:
+============================================================
+  • Floating Rock Platforms: Jump up through platforms from below to gain tactical high ground.
+  • Medkit Drops: Periodically drop on platforms. Touch a medkit to restore +3 HP!
+
+============================================================
+⚙️ ARENA SETTINGS:
+============================================================
+  • Audio Adjuster: Independent Volume sliders for Master, Music, and SFX.
+  • Music & SFX Mute buttons: Quick one-click audio toggles in settings and pause menu.
+  • Fighter Health: Choose 10 HP (Balanced), 15 HP (Extended), or 20 HP (Endurance).
+  • Match Formats: Choose Best of 3, Best of 5, or Sudden Death (1 Round).
+  • Screen Shake: Punchy camera impact feedback toggle.
+
+============================================================
+🏁 ROUNDS & VICTORY:
+============================================================
+  • Each player starts with 10 HP (or your configured HP tier).
+  • Survive each round by depleting your rival's HP to 0.
+  • Win the majority of rounds to become Champion!

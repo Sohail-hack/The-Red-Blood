@@ -1,0 +1,12 @@
+# System & Editor files
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+.idea/
+
+# Temporary / Scratch
+scratch/
+.system_generated/
+Red-Blood-main/
+*.orig.png
